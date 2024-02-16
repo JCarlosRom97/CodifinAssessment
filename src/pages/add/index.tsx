@@ -5,6 +5,7 @@ import { ContainerForm, ErrorText, Input, InputContainer, NextButtonContainer, T
 import { useDispatch } from 'react-redux';
 import { add } from '../../redux/reducers/products.reducer';
 import Header from '../../Components/Header';
+import { Container } from '../../Styles/globals';
 
 
 const Add = () => {
@@ -55,7 +56,7 @@ const Add = () => {
 
     
     return(
-        <>
+        <Container>
             <Header/>
             <ContainerForm>
                 <TextContainer>
@@ -140,7 +141,7 @@ const Add = () => {
                 </NextButtonContainer>
             </ContainerForm>
         
-        </>
+        </Container>
     )
 }
 

@@ -8,6 +8,10 @@ export const ContainerForm = styled.div`
     height: 100%; 
     padding-left: 350px;
     padding-right: 350px; 
+    @media (max-width: 1000px){
+        padding: 30px; 
+        
+    }
 `
 
 export const TextContainer = styled.div`

@@ -14,6 +14,9 @@ export const TitleHeader = styled.p`
     font-size: 30px; 
     font-weight: bold; 
     flex:8; 
+    @media (max-width: 1000px){
+        font-size: 12px; 
+    }
 `
 
 export const SearchBar = styled.input`
