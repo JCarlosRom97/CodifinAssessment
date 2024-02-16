@@ -23,10 +23,10 @@ const CartDetail = () => {
         accumulator + product.price * resolveQuantity(product.quantity);
         const total = products.reduce(reducer, 0)
         setTotal(total)
-    }, [])
+    }, [products])
 
     const handlerDelete = (quantity:number, sku:string) => {
-        if(quantity == 1){
+        if(quantity === 1){
             dispatch(removeAll({sku:sku}))
             return; 
         }
@@ -47,10 +47,10 @@ const CartDetail = () => {
                         <p>Price: ${product.price}</p>
                     </CartDetailsProduct>
                     <CartDetailsProduct>
-                        <p>Total: ${product.price * (product?.quantity ?? 0) }</p>
+                        <p>Total: ${product.price * resolveQuantity(product.quantity) }</p>
                     </CartDetailsProduct>
                     <CartDetailsProduct>
-                        <ButtonRemove onClick={() => handlerDelete((product?.quantity ?? 0) , product.sku)}>-</ButtonRemove>
+                        <ButtonRemove onClick={() => handlerDelete( resolveQuantity(product.quantity) , product.sku)}>-</ButtonRemove>
                         <ButtonRemove onClick={() => dispatch(removeAll({sku: product.sku}))}>Delete All</ButtonRemove>
                     </CartDetailsProduct>
                 </ContainerProductDetail>

@@ -70,7 +70,7 @@ const Add = () => {
                                 required: true
                             }}
                             render={({ field: { onChange, value } }) => (
-                                <Input value={value} onChange={onChange} error={errors.sku != undefined}/>
+                                <Input value={value} onChange={onChange} error={errors.sku !== undefined}/>
                             )}
                             name="sku"
                         />
@@ -84,7 +84,7 @@ const Add = () => {
                                 required: true
                             }}
                             render={({ field: { onChange, value } }) => (
-                                <Input value={value} onChange={onChange} error={errors.name != undefined}/>
+                                <Input value={value} onChange={onChange} error={errors.name !== undefined}/>
                             )}
                             name="name"
                         />
@@ -98,7 +98,7 @@ const Add = () => {
                                 required: true
                             }}
                             render={({ field: { onChange, value } }) => (
-                                <Input  value={value} onChange={onChange} error={errors.description != undefined}/>
+                                <Input  value={value} onChange={onChange} error={errors.description !== undefined}/>
                             )}
                             name="description"
                         />
@@ -113,7 +113,7 @@ const Add = () => {
                                 required: true
                             }}
                             render={({ field: { onChange, value } }) => (
-                                <Input value={value} onChange={onChange} error={errors.price != undefined}/>   
+                                <Input value={value} onChange={onChange} error={errors.price !== undefined}/>   
                             )}
                             name="price"
                         />
@@ -127,7 +127,7 @@ const Add = () => {
                                 required: true
                             }}
                             render={({ field: { onChange, value } }) => (
-                                <Input value={value} onChange={onChange} error={errors.imgUrl != undefined}/>
+                                <Input value={value} onChange={onChange} error={errors.imgUrl !== undefined}/>
                             )}
                             name="imgUrl"
                         />

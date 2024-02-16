@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IProduct, IProductCart } from "../../Types";
-import { act } from "react-dom/test-utils";
+
 
 type SliceState ={
     data:IProductCart[]
@@ -24,8 +24,8 @@ const cart = createSlice({
 
             if(isInCart){
                 state.data.map((product)=>{
-                    if(product.sku== action.payload.sku){
-                        return {...product, quantity: product.quantity++} 
+                    if(product.sku === action.payload.sku){
+                        return {...product, quantity: (product.quantity ? product.quantity ++: 0)} 
                     }
                     return product; 
                 })
@@ -35,9 +35,9 @@ const cart = createSlice({
         },
         removeOne: (state, action: PayloadAction<SKU>) => {
             state.data.map((product)=>{
-                if(product.sku== action.payload.sku){
-                    if(product.quantity>1){
-                        return {...product, quantity: product.quantity--} 
+                if(product.sku === action.payload.sku){
+                    if((product.quantity ? product.quantity: 0)>1){
+                        return {...product, quantity: (product.quantity ? product.quantity-- : 0)} 
                     }
                     return {...product, quantity: 0} 
                 }
@@ -46,10 +46,8 @@ const cart = createSlice({
 
         },
         removeAll: (state, action: PayloadAction<SKU>) => { 
-            console.log("remove all", action.payload.sku)
             const tempFilter = state.data.filter((product) => product.sku !== action.payload.sku)
             state.data = [...tempFilter]; 
-
         }
     }
 })

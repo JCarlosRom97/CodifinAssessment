@@ -1,16 +1,18 @@
 import { useSelector } from "react-redux";
-import { IProduct, ISelectorCart, ISelectorProduct } from "../../Types";
+import { IProduct, IProductCart, ISelectorCart, ISelectorProduct } from "../../Types";
 import { Container, HeaderContainer } from "../../Styles/globals";
 import { ContainerCards, SearchBar, LinkButton, Button, TitleHeader } from "../../Styles/Pages/Home";
 import CardProduct from "../../Components/CardProduct";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { resolveQuantity } from "../../Hooks";
 
 function Home() {
   const productsRedux = useSelector((state: ISelectorProduct)=> state.products.data); 
-  const productsCard = useSelector((state:ISelectorCart) => state.cart.data)
+  const productsCart = useSelector((state:ISelectorCart) => state.cart.data)
 
   const [products, setProducts] = useState<IProduct[]>(productsRedux);
   const [isSorted, setIsSorted] = useState(false);
+  const [totalProducts, setTotalProducts] = useState(0);
 
   const searchByName = (e: { target: { value: string; }; }) => {
     const name = e.target.value; 
@@ -31,6 +33,13 @@ function Home() {
 
   } 
 
+  useEffect(()=>{
+    const reducer = (accumulator: number, product: IProductCart) =>
+    accumulator + resolveQuantity(product.quantity);
+    const total = productsCart.reduce(reducer, 0)
+    setTotalProducts(total)
+  }, [productsCart])
+
   
 
   return (
@@ -40,7 +49,7 @@ function Home() {
         <Button onClick={sortByPrice}>Sort</Button>
         <SearchBar placeholder="Search" onChange={searchByName}  />
         <LinkButton to={"/add"}>Add Product</LinkButton>
-        <LinkButton to={"/cart"}>Cart ({productsCard.length})</LinkButton>
+        <LinkButton to={"/cart"}>Cart ({totalProducts})</LinkButton>
       </HeaderContainer>
       <ContainerCards>
         <CardProduct products={products}/>

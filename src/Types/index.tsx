@@ -12,7 +12,7 @@ export interface IProductCart {
     price: number, 
     description: string,
     imgUrl: string,
-    quantity?: number ;
+    quantity?: number;
 }
 
 

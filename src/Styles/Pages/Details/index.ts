@@ -30,3 +30,11 @@ export const PriceDetail = styled.p`
     margin-right: auto;
     font-size: 30px;
 `
+
+export const ButtonCartDetail = styled.button`
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    background-color: ghostwhite;
+`
