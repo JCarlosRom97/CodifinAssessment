@@ -1,0 +1,9 @@
+[
+    {   
+        "sku":"air1232",
+        "name":"Airpods", 
+        "price": 100,
+        "description": "Good quality headphones by apple (third gen)",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/0/01/AirPods.jpg"
+    }
+]
