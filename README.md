@@ -102,6 +102,11 @@ _Below is an example of how you can instruct your audience on installing and set
    npm install
    ```
 
+3. Run project
+   ```sh
+   npm run start
+   ```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
