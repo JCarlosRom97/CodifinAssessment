@@ -1,4 +1,4 @@
-import { ButtonRemove, ContainerCartDetail, ContainerProductDetail } from "../../Styles/Components/CartDetail"
+import { ButtonRemove, ContainerCartDetail, ContainerProductDetail, TextDetailCart } from "../../Styles/Components/CartDetail"
 import { useSelector } from "react-redux"
 import { IProductCart, ISelectorCart } from "../../Types"
 import { useEffect, useState } from "react";
@@ -38,27 +38,27 @@ const CartDetail = () => {
             {products.length > 0 ? products.map((product:IProductCart)=>(
                 <ContainerProductDetail key={product.sku}>  
                     <CartDetailsProduct>
-                        <p>{product.name}</p>
+                        <TextDetailCart>{product.name}</TextDetailCart>
                     </CartDetailsProduct>
                     <CartDetailsProduct>
-                        <p>Quantity:{product.quantity}</p>
+                        <TextDetailCart>Quantity:{product.quantity}</TextDetailCart>
                     </CartDetailsProduct>
                     <CartDetailsProduct>
-                        <p>Price: ${product.price}</p>
+                        <TextDetailCart>Price: ${product.price}</TextDetailCart>
                     </CartDetailsProduct>
                     <CartDetailsProduct>
-                        <p>Total: ${product.price * resolveQuantity(product.quantity) }</p>
+                        <TextDetailCart>Total: ${product.price * resolveQuantity(product.quantity) }</TextDetailCart>
                     </CartDetailsProduct>
                     <CartDetailsProduct>
                         <ButtonRemove onClick={() => handlerDelete( resolveQuantity(product.quantity) , product.sku)}>-</ButtonRemove>
-                        <ButtonRemove onClick={() => dispatch(removeAll({sku: product.sku}))}>Delete All</ButtonRemove>
+                        <ButtonRemove onClick={() => dispatch(removeAll({sku: product.sku}))}>All</ButtonRemove>
                     </CartDetailsProduct>
                 </ContainerProductDetail>
             )):(
                 <ErrorText>No products in cart, keep watching our <Link to={"/"}>catalogue</Link></ErrorText>
             )}
             <CartDetailsProduct>
-                <p>Quantity: ${total}</p>
+                <TextDetailCart>Quantity: ${total}</TextDetailCart>
             </CartDetailsProduct>
         </ContainerCartDetail>
     )
