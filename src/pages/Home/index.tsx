@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
-import { IProduct, ISelectorProduct } from "../../Types";
-import { Container, Header } from "../../Styles/globals";
+import { IProduct, ISelectorCart, ISelectorProduct } from "../../Types";
+import { Container, HeaderContainer } from "../../Styles/globals";
 import { ContainerCards, SearchBar, LinkButton, Button, TitleHeader } from "../../Styles/Pages/Home";
 import CardProduct from "../../Components/CardProduct";
 import { useState } from "react";
 
 function Home() {
   const productsRedux = useSelector((state: ISelectorProduct)=> state.products.data); 
+  const productsCard = useSelector((state:ISelectorCart) => state.cart.data)
+
   const [products, setProducts] = useState<IProduct[]>(productsRedux);
   const [isSorted, setIsSorted] = useState(false);
 
@@ -33,12 +35,13 @@ function Home() {
 
   return (
     <Container>
-      <Header>
+      <HeaderContainer>
         <TitleHeader>Web Online Shop</TitleHeader>
         <Button onClick={sortByPrice}>Sort</Button>
         <SearchBar placeholder="Search" onChange={searchByName}  />
         <LinkButton to={"/add"}>Add Product</LinkButton>
-      </Header>
+        <LinkButton to={"/cart"}>Cart ({productsCard.length})</LinkButton>
+      </HeaderContainer>
       <ContainerCards>
         <CardProduct products={products}/>
       </ContainerCards>

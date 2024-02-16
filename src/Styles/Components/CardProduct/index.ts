@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div<{iscart?:string}>`
     flex: 3;
-    height: 400px; 
+    ${({iscart}) => iscart ? ` height: 450px;` : `height: 400px;`};
     background-color: aliceblue;
     border: 2px solid black;
     border-radius: 20px; 
@@ -33,4 +33,15 @@ export const ButtonsCardContainer = styled.div`
 export const ButtonCard = styled.button`
     flex: 6; 
     background-color: powderblue;
+`
+
+export const PriceDetailsContainer = styled.div`
+    display:flex; 
+    flex-direction: row; 
+    margin: 10px;
+`
+
+export const CartDetailsProduct = styled.div`
+    flex:4;
+    textAlign:"center";
 `

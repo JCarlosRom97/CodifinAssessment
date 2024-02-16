@@ -7,7 +7,7 @@ export const Container = styled.div`
 `
 
 
-export const Header = styled.div`
+export const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
